@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -32,8 +33,10 @@ public class ThepCalculator extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     EditText etxtUrName,etxtPartnerName;
+    int i,Total=0;
     Button btnTCalc;
-    TextView txtMsg;
+    CustomGauge gauge;
+    TextView txtMsg,txtgauge;
     String urName,partnerName;
     String[] nameArray;
     List<String> listAlpha=new ArrayList<String>();
@@ -85,13 +88,42 @@ public class ThepCalculator extends Fragment {
         etxtUrName=v.findViewById(R.id.etxtUrName);
         btnTCalc=v.findViewById(R.id.btnTCalc);
         txtMsg=v.findViewById(R.id.txtMsg);
+        gauge=v.findViewById(R.id.gauge1);
+        txtgauge=v.findViewById(R.id.textViewguage);
+        gauge.setEndValue(700);
 
         btnTCalc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                urName=etxtUrName.getText().toString();
-                partnerName=etxtPartnerName.getText().toString();
-                txtMsg.setText(TCALC(urName,partnerName));
+                urName = etxtUrName.getText().toString();
+                partnerName = etxtPartnerName.getText().toString();
+
+                if (urName.equals("") || partnerName.equals("")) {
+                    Toast.makeText(getActivity(), "Fill Your name & Partner name", Toast.LENGTH_SHORT).show();
+                } else {
+
+                    txtMsg.setText(TCALC(urName, partnerName));
+
+                    new Thread() {
+                        public void run() {
+                            for (i = 0; i <= Total * 10; i++) {
+                                try {
+                                    getActivity().runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            gauge.setValue(200 + i * 5);
+                                            txtgauge.setText(Integer.toString(Total * 10));
+                                        }
+                                    });
+                                    Thread.sleep(50);
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        }
+                    }.start();
+
+                }
             }
         });
 
@@ -99,11 +131,12 @@ public class ThepCalculator extends Fragment {
     }
 
     public String TCALC(String urName,String partnerName){
-
+        Total=0;
         StringBuilder sb=new StringBuilder();
         sb.append(urName);
         sb.append(partnerName);
-        int Total=0;
+
+
         nameArray=sb.toString().toUpperCase().split("");
         //String newArr=Arrays.toString(nameArray);
 
@@ -115,7 +148,6 @@ public class ThepCalculator extends Fragment {
             //Log.i("aaaaa", ""+nameArray[0]);
             if(listAlpha.contains(nameArray[j])){
                 Total+= listAlpha.indexOf(nameArray[j])+1;
-
             }
         }
         if(Total>100){
@@ -124,6 +156,7 @@ public class ThepCalculator extends Fragment {
         else{
             Total=Total%10;
         }
+
 
         return msgs[Total];
     }
