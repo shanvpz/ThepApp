@@ -90,9 +90,10 @@ public class Main2Activity extends AppCompatActivity
                 loadContent(new ThepCalculator());
                 drawer.closeDrawer(GravityCompat.START);
                 return true;
-//            case R.id.second:
-//                loadContent(new SecondFragment());
-//                return true;
+            case R.id.tdeclare:
+                loadContent(new DeclareFragment());
+                drawer.closeDrawer(GravityCompat.START);
+                return true;
 //            case R.id.third:
 //                loadContent(new ThirdFragment());
 //                return true;
