@@ -3,7 +3,8 @@ package in.techfantasy.thepapp;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -32,8 +35,8 @@ public class ThepCalculator extends Fragment {
     Button btnTCalc;
     TextView txtMsg;
     String urName,partnerName;
-    char[] nameArray;
-    List<String> listAlpha;
+    String[] nameArray;
+    List<String> listAlpha=new ArrayList<String>();
     String[] alphabets={"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
     String[] msgs={"1st","2nd","3rd","4th","5th","6th","7th","8th","9th"};
     // TODO: Rename and change types of parameters
@@ -82,11 +85,12 @@ public class ThepCalculator extends Fragment {
         etxtUrName=v.findViewById(R.id.etxtUrName);
         btnTCalc=v.findViewById(R.id.btnTCalc);
         txtMsg=v.findViewById(R.id.txtMsg);
-        urName=etxtUrName.getText().toString();
-        partnerName=etxtPartnerName.getText().toString();
+
         btnTCalc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                urName=etxtUrName.getText().toString();
+                partnerName=etxtPartnerName.getText().toString();
                 txtMsg.setText(TCALC(urName,partnerName));
             }
         });
@@ -100,14 +104,18 @@ public class ThepCalculator extends Fragment {
         sb.append(urName);
         sb.append(partnerName);
         int Total=0;
-        nameArray=sb.toString().toCharArray();
+        nameArray=sb.toString().toUpperCase().split("");
+        //String newArr=Arrays.toString(nameArray);
 
         for (int i=0;i<alphabets.length;i++){
             listAlpha.add(alphabets[i]);
         }
         for(int j=0;j<nameArray.length;j++){
+
+            //Log.i("aaaaa", ""+nameArray[0]);
             if(listAlpha.contains(nameArray[j])){
-                Total+= listAlpha.indexOf(nameArray[j]);
+                Total+= listAlpha.indexOf(nameArray[j])+1;
+
             }
         }
         if(Total>100){
@@ -130,12 +138,12 @@ public class ThepCalculator extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
+//        if (context instanceof OnFragmentInteractionListener) {
+//            mListener = (OnFragmentInteractionListener) context;
+//        } else {
+//            throw new RuntimeException(context.toString()
+//                    + " must implement OnFragmentInteractionListener");
+//        }
     }
 
     @Override
