@@ -5,9 +5,73 @@
     tools:context="in.techfantasy.thepapp.DeclareFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Iam Happy to declare my ThepStory"
+            android:textAlignment="center" />
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/etxtPatNameThep"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:digits="qwertzuiopasdfghjklyxcvbnm"
+                android:hint="Patner Name"
+                android:inputType="text"
+                android:singleLine="true" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/etxtUrNamethep"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:digits="qwertzuiopasdfghjklyxcvbnm"
+                android:hint="Your Name"
+                android:inputType="text"
+                android:singleLine="true" />
+        </android.support.design.widget.TextInputLayout>
+
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/etxtUrstorythep"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:digits="qwertzuiopasdfghjklyxcvbnm"
+                android:hint="Thep Story"
+                android:inputType="text"
+                />
+        </android.support.design.widget.TextInputLayout>
+
+
+
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Button"
+            android:layout_gravity="center_horizontal"/>
+
+
+    </LinearLayout>
 
 </FrameLayout>
