@@ -138,6 +138,11 @@ public class Main2Activity extends AppCompatActivity
                 drawer.closeDrawer(GravityCompat.START);
                 gv.setVisibility(View.GONE);
                 return true;
+            case R.id.tsongs:
+                loadContent(new ThepSongs());
+                drawer.closeDrawer(GravityCompat.START);
+                gv.setVisibility(View.GONE);
+                return true;
         }
         //return false;
 
