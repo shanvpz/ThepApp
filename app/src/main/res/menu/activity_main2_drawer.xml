@@ -6,23 +6,23 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/tCalc"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/calculator"
             android:title="Thep Calculator" />
         <item
             android:id="@+id/tdeclare"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/theatremasks"
             android:title="Declare My Thep" />
         <item
             android:id="@+id/tstories"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/videocamera"
             android:title="Thep Stories" />
         <item
             android:id="@+id/tsongs"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/musicplayer"
             android:title="Thep Songs" />
         <item
             android:id="@+id/tcommunity"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/network"
             android:title="Thep Community" />
 
     </group>
