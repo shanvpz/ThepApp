@@ -3,9 +3,13 @@ package in.techfantasy.thepapp;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Context;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.util.TypedValue;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -15,9 +19,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup;
+import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 public class Main2Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    GridView gv;
+    ImageView iv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +53,20 @@ public class Main2Activity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        View v= LayoutInflater.from(Main2Activity.this).inflate(R.layout.custom,null,false);
+        gv=findViewById(R.id.gridview);
+
+
+
+
+        int[] img={R.drawable.menu1,R.drawable.menu2,R.drawable.menu03,R.drawable.menu04,R.drawable.menu1,R.drawable.menu2,R.drawable.menu03,R.drawable.menu04};
+        gv.setAdapter(new CustomAdapter(Main2Activity.this,img));
+
+
+
+
+
     }
 
     @Override
@@ -89,10 +113,12 @@ public class Main2Activity extends AppCompatActivity
             case R.id.tCalc:
                 loadContent(new ThepCalculator());
                 drawer.closeDrawer(GravityCompat.START);
+                gv.setVisibility(View.GONE);
                 return true;
             case R.id.tdeclare:
                 loadContent(new DeclareFragment());
                 drawer.closeDrawer(GravityCompat.START);
+                gv.setVisibility(View.GONE);
                 return true;
 //            case R.id.third:
 //                loadContent(new ThirdFragment());
@@ -111,5 +137,14 @@ public class Main2Activity extends AppCompatActivity
         FragmentTransaction ft=fm.beginTransaction();
         ft.replace(R.id.frameLayout,f);
         ft.commit();
+    }
+
+    public static int convertDpToPixels(float dp, Context context){
+        Resources resources = context.getResources();
+        return (int) TypedValue.applyDimension(
+                TypedValue.COMPLEX_UNIT_DIP,
+                dp,
+                resources.getDisplayMetrics()
+        );
     }
 }
