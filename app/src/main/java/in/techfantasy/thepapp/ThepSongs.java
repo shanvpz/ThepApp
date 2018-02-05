@@ -74,7 +74,7 @@ public class ThepSongs extends Fragment {
         final String mimeType = "text/html";
         final String encoding = "UTF-8";
         wv.getSettings().setJavaScriptEnabled(true);
-        String html = "<style>.meta{display:none} .html5-video-player{} .clip img{margin-right:20px;}</style>"+
+        String html = "<style>.meta{display:none} .html5-video-player{} .clip img{margin-right:20px;} .ytlist{text-align:left;}</style>"+
                 "<div style=\"width:100%\"><script src=\"http://www.yvoschaap.com/ytpage/ytembed.js\"></script><center><div id=\"ytThumbs\"></div></center></div><script> ytEmbed.init({'block':'ytThumbs','key':'AIzaSyCZEzlbeZgHKnn97NUNIRJ2IvBDS97mQIc','q':'PLS4UjDrkf-h1q1RGfYcJ5XEIWT-Vu4S5g','type':'playlist','results':50,'meta':true,'player':'embed','layout':'full'});</script>";
 
 
