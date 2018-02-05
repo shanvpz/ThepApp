@@ -13,6 +13,14 @@
             android:icon="@drawable/theatremasks"
             android:title="Declare My Thep" />
         <item
+            android:id="@+id/trecent"
+            android:icon="@drawable/passageoftime"
+            android:title="Recent Thepz" />
+        <item
+            android:id="@+id/ttroll"
+            android:icon="@drawable/laughing"
+            android:title="Thep Trolls" />
+        <item
             android:id="@+id/tstories"
             android:icon="@drawable/videocamera"
             android:title="Thep Stories" />
