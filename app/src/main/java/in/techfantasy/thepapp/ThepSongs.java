@@ -14,12 +14,12 @@ import android.webkit.WebViewClient;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link ThepStories.OnFragmentInteractionListener} interface
+ * {@link ThepSongs.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link ThepStories#newInstance} factory method to
+ * Use the {@link ThepSongs#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ThepStories extends Fragment {
+public class ThepSongs extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -31,7 +31,7 @@ public class ThepStories extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public ThepStories() {
+    public ThepSongs() {
         // Required empty public constructor
     }
 
@@ -41,11 +41,11 @@ public class ThepStories extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment ThepStories.
+     * @return A new instance of fragment ThepSongs.
      */
     // TODO: Rename and change types and number of parameters
-    public static ThepStories newInstance(String param1, String param2) {
-        ThepStories fragment = new ThepStories();
+    public static ThepSongs newInstance(String param1, String param2) {
+        ThepSongs fragment = new ThepSongs();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -66,10 +66,8 @@ public class ThepStories extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_thep_stories, container, false);
-        WebView wv=v.findViewById(R.id.webview1);
-        String ua = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.140 Safari/537.36";
-        wv.getSettings().setUserAgentString(ua);
+        View v = inflater.inflate(R.layout.fragment_thep_songs, container, false);
+        WebView wv=v.findViewById(R.id.webview2);
         wv.getSettings().setLoadWithOverviewMode(true);
         wv.getSettings().setUseWideViewPort(true);
         wv.setWebViewClient(new WebViewClient());
@@ -77,11 +75,10 @@ public class ThepStories extends Fragment {
         final String encoding = "UTF-8";
         wv.getSettings().setJavaScriptEnabled(true);
         String html = "<style>.meta{display:none} .html5-video-player{} .clip img{margin-right:20px;}</style>"+
-                "<div style=\"width:100%\"><script src=\"http://www.yvoschaap.com/ytpage/ytembed.js\"></script><center><div id=\"ytThumbs\"></div></center></div><script> ytEmbed.init({'block':'ytThumbs','key':'AIzaSyCZEzlbeZgHKnn97NUNIRJ2IvBDS97mQIc','q':'PLS4UjDrkf-h3EDnuXRZpLSSVk2C5p_no2','type':'playlist','results':50,'meta':true,'player':'embed','layout':'full'});</script>";
+                "<div style=\"width:100%\"><script src=\"http://www.yvoschaap.com/ytpage/ytembed.js\"></script><center><div id=\"ytThumbs\"></div></center></div><script> ytEmbed.init({'block':'ytThumbs','key':'AIzaSyCZEzlbeZgHKnn97NUNIRJ2IvBDS97mQIc','q':'PLS4UjDrkf-h1q1RGfYcJ5XEIWT-Vu4S5g','type':'playlist','results':50,'meta':true,'player':'embed','layout':'full'});</script>";
 
 
         wv.loadDataWithBaseURL("", html, mimeType, encoding, "");
-
         return v;
     }
 
