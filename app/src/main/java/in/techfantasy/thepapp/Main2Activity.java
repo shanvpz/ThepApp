@@ -5,6 +5,7 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -23,11 +24,13 @@ import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 public class Main2Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     GridView gv;
-    ImageView iv;
+
+    TextView txtdecnav;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,9 +57,19 @@ public class Main2Activity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        View v= LayoutInflater.from(Main2Activity.this).inflate(R.layout.custom,null,false);
         gv=findViewById(R.id.gridview);
 
+
+        View hView =  navigationView.getHeaderView(0);
+
+        TextView nav_user = (TextView)hView.findViewById(R.id.textViewdecnav);
+        Typeface typeFace = Typeface.createFromAsset(getAssets(),"ML-NILA03_NewLipi.ttf");
+        nav_user.setTypeface(typeFace);
+        nav_user.setText("തേപ്പ് ഒരു കലയാണ്");
+
+        TextView nav_title = (TextView)hView.findViewById(R.id.textViewtitlenav);
+        nav_title.setTypeface(typeFace);
+        nav_title.setText("തേപ്പ്");
 
 
 
@@ -120,9 +133,11 @@ public class Main2Activity extends AppCompatActivity
                 drawer.closeDrawer(GravityCompat.START);
                 gv.setVisibility(View.GONE);
                 return true;
-//            case R.id.third:
-//                loadContent(new ThirdFragment());
-//                return true;
+            case R.id.tstories:
+                loadContent(new ThepStories());
+                drawer.closeDrawer(GravityCompat.START);
+                gv.setVisibility(View.GONE);
+                return true;
         }
         //return false;
 

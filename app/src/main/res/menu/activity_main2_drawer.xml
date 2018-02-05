@@ -13,13 +13,18 @@
             android:icon="@drawable/ic_menu_gallery"
             android:title="Declare My Thep" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/tstories"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
+            android:title="Thep Stories" />
         <item
-            android:id="@+id/nav_manage"
+            android:id="@+id/tsongs"
             android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:title="Thep Songs" />
+        <item
+            android:id="@+id/tcommunity"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Thep Community" />
+
     </group>
 
     <item android:title="Communicate">
