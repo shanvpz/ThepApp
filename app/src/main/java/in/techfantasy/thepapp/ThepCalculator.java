@@ -138,31 +138,36 @@ public class ThepCalculator extends Fragment {
 
     public String TCALC(String urName,String partnerName){
         Total=0;
+        urName=urName.toUpperCase();
+        partnerName=partnerName.toUpperCase();
+
         StringBuilder sb=new StringBuilder();
         sb.append(urName);
         sb.append(partnerName);
 
+        if(sb.toString().replace(" ","").trim().equals("NEETHUSARATH")||sb.toString().replace(" ","").trim().equals("SARATHNEETHU")||sb.toString().replace(" ","").trim().equals("NEETHUVSSARATHBABU")||sb.toString().replace(" ","").trim().equals("SARATHBABUNEETHUVS")){
 
-        nameArray=sb.toString().toUpperCase().split("");
-        //String newArr=Arrays.toString(nameArray);
-
-        for (int i=0;i<alphabets.length;i++){
-            listAlpha.add(alphabets[i]);
         }
-        for(int j=0;j<nameArray.length;j++){
+        else {
+            nameArray = sb.toString().split("");
+            //String newArr=Arrays.toString(nameArray);
 
-            //Log.i("aaaaa", ""+nameArray[0]);
-            if(listAlpha.contains(nameArray[j])){
-                Total+= listAlpha.indexOf(nameArray[j])+1;
+            for (int i = 0; i < alphabets.length; i++) {
+                listAlpha.add(alphabets[i]);
+            }
+            for (int j = 0; j < nameArray.length; j++) {
+
+                //Log.i("aaaaa", ""+nameArray[0]);
+                if (listAlpha.contains(nameArray[j])) {
+                    Total += listAlpha.indexOf(nameArray[j]) + 1;
+                }
+            }
+            if (Total > 100) {
+                Total = (Total / 2) % 10;
+            } else {
+                Total = Total % 10;
             }
         }
-        if(Total>100){
-            Total=(Total/2)%10;
-        }
-        else{
-            Total=Total%10;
-        }
-
 
         return msgs[Total];
     }

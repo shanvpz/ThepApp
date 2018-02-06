@@ -99,9 +99,9 @@ public class DeclareFragment extends Fragment {
                         Toast.makeText(getActivity().getApplicationContext(), "Success!", Toast.LENGTH_SHORT).show();
                         etxtMyName.getText().clear();
                         etxtPartnerName.getText().clear();
-                        etxtStory.getText().toString();
-                        etxtStartDate.getText().toString();
-                        etxtEndDate.getText().toString();
+                        etxtStory.getText().clear();
+                        etxtStartDate.getText().clear();
+                        etxtEndDate.getText().clear();
                     }
                 }
                 catch (Exception e){

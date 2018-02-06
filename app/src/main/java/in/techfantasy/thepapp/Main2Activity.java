@@ -4,9 +4,11 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.util.TypedValue;
@@ -25,12 +27,16 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Main2Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     GridView gv;
-
+    boolean doubleBackToExitPressedOnce = false;
     TextView txtdecnav;
+    boolean atHome=true;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,7 +95,29 @@ public class Main2Activity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+//            super.onBackPressed();
+            if (atHome) {
+                if (doubleBackToExitPressedOnce) {
+                    super.onBackPressed();
+                    return;
+                }
+
+                this.doubleBackToExitPressedOnce = true;
+                Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+
+                new Handler().postDelayed(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        doubleBackToExitPressedOnce = false;
+                    }
+                }, 2000);
+            }
+            else {
+                finish();
+                startActivity(new Intent(Main2Activity.this,Main2Activity.class));
+                atHome=true;
+            }
         }
     }
 
@@ -128,26 +156,31 @@ public class Main2Activity extends AppCompatActivity
                 loadContent(new ThepCalculator());
                 drawer.closeDrawer(GravityCompat.START);
                 gv.setVisibility(View.GONE);
+                atHome=false;
                 return true;
             case R.id.tdeclare:
                 loadContent(new DeclareFragment());
                 drawer.closeDrawer(GravityCompat.START);
                 gv.setVisibility(View.GONE);
+                atHome=false;
                 return true;
             case R.id.tstories:
                 loadContent(new ThepStories());
                 drawer.closeDrawer(GravityCompat.START);
                 gv.setVisibility(View.GONE);
+                atHome=false;
                 return true;
             case R.id.tsongs:
                 loadContent(new ThepSongs());
                 drawer.closeDrawer(GravityCompat.START);
                 gv.setVisibility(View.GONE);
+                atHome=false;
                 return true;
             case R.id.ttroll:
                 loadContent(new TrollsFragment());
                 drawer.closeDrawer(GravityCompat.START);
                 gv.setVisibility(View.GONE);
+                atHome=false;
                 return true;
         }
         //return false;
