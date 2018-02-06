@@ -143,6 +143,11 @@ public class Main2Activity extends AppCompatActivity
                 drawer.closeDrawer(GravityCompat.START);
                 gv.setVisibility(View.GONE);
                 return true;
+            case R.id.ttroll:
+                loadContent(new TrollsFragment());
+                drawer.closeDrawer(GravityCompat.START);
+                gv.setVisibility(View.GONE);
+                return true;
         }
         //return false;
 
