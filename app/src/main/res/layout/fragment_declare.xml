@@ -26,7 +26,7 @@
                 android:id="@+id/etxtPatNameThep"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:digits="qwertzuiopasdfghjklyxcvbnm"
+                android:digits="qwertzuiopasdfghjklyxcvbnm "
                 android:hint="Patner Name"
                 android:inputType="text"
                 android:singleLine="true" />
@@ -40,7 +40,7 @@
                 android:id="@+id/etxtUrNamethep"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:digits="qwertzuiopasdfghjklyxcvbnm"
+                android:digits="qwertzuiopasdfghjklyxcvbnm "
                 android:hint="Your Name"
                 android:inputType="text"
                 android:singleLine="true" />
@@ -55,21 +55,35 @@
                 android:id="@+id/etxtUrstorythep"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:digits="qwertzuiopasdfghjklyxcvbnm"
+                android:digits="qwertzuiopasdfghjklyxcvbnm "
                 android:hint="Thep Story"
                 android:inputType="text"
                 />
         </android.support.design.widget.TextInputLayout>
 
 
+        <EditText
+            android:id="@+id/date1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Start Date"
+            android:inputType="date" />
 
+        <EditText
+            android:id="@+id/date2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="End Date"
+            android:inputType="date" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btnDeclare"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Button"
-            android:layout_gravity="center_horizontal"/>
+            android:layout_gravity="center_horizontal"
+            android:text="Declare" />
 
 
     </LinearLayout>

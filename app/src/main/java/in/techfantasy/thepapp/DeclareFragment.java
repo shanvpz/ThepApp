@@ -7,6 +7,12 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 
 /**
@@ -22,7 +28,8 @@ public class DeclareFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+    EditText etxtMyName,etxtPartnerName,etxtStory,etxtStartDate,etxtEndDate;
+    Button btnDeclare;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -64,7 +71,45 @@ public class DeclareFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_declare, container, false);
+        View v = inflater.inflate(R.layout.fragment_declare, container, false);
+        etxtMyName=v.findViewById(R.id.etxtUrNamethep);
+        etxtPartnerName=v.findViewById(R.id.etxtPatNameThep);
+        etxtStory=v.findViewById(R.id.etxtUrstorythep);
+        etxtStartDate=v.findViewById(R.id.date1);
+        etxtEndDate=v.findViewById(R.id.date2);
+        btnDeclare=v.findViewById(R.id.btnDeclare);
+        btnDeclare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    String myname,hername,startdate,enddate,story;
+                    myname=etxtMyName.getText().toString();
+                    hername=etxtPartnerName.getText().toString();
+                    story=etxtStory.getText().toString();
+                    startdate=etxtStartDate.getText().toString();
+                    enddate=etxtEndDate.getText().toString();
+                    DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("DeclarationModel");
+                    String declarationId = mDatabase.push().getKey();
+                    DeclarationModel dm = new DeclarationModel(myname,hername,story,startdate,enddate);
+                    if(myname.equals("")||hername.equals("")||startdate.equals("")||enddate.equals("")){
+                        Toast.makeText(getActivity().getApplicationContext(),"All fields are mandatory!",Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        mDatabase.child(declarationId).setValue(dm);
+                        Toast.makeText(getActivity().getApplicationContext(), "Success!", Toast.LENGTH_SHORT).show();
+                        etxtMyName.getText().clear();
+                        etxtPartnerName.getText().clear();
+                        etxtStory.getText().toString();
+                        etxtStartDate.getText().toString();
+                        etxtEndDate.getText().toString();
+                    }
+                }
+                catch (Exception e){
+                    Toast.makeText(getActivity().getApplicationContext(),"Something went wrong, Try Again Later!",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        return v;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

@@ -13,6 +13,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -97,13 +100,16 @@ public class ThepCalculator extends Fragment {
             public void onClick(View v) {
                 urName = etxtUrName.getText().toString();
                 partnerName = etxtPartnerName.getText().toString();
+                DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("CalcModel");
+                String entryId = mDatabase.push().getKey();
 
                 if (urName.equals("") || partnerName.equals("")) {
                     Toast.makeText(getActivity(), "Fill Your name & Partner name", Toast.LENGTH_SHORT).show();
                 } else {
 
                     txtMsg.setText(TCALC(urName, partnerName));
-
+                    CalcModel entry = new CalcModel(urName, partnerName,""+Total);
+                    mDatabase.child(entryId).setValue(entry);
                     new Thread() {
                         public void run() {
                             for (i = 0; i <= Total * 10; i++) {

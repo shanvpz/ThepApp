@@ -21,7 +21,7 @@
                 android:layout_height="wrap_content"
                 android:hint="Your Name"
                 android:inputType="text"
-                android:digits="qwertzuiopasdfghjklyxcvbnm"
+                android:digits="qwertzuiopasdfghjklyxcvbnm "
                 android:singleLine="true" />
         </android.support.design.widget.TextInputLayout>
         <android.support.design.widget.TextInputLayout
@@ -34,7 +34,7 @@
                 android:layout_height="wrap_content"
                 android:hint="Partner Name"
                 android:inputType="text"
-                android:digits="qwertzuiopasdfghjklyxcvbnm"
+                android:digits="qwertzuiopasdfghjklyxcvbnm "
                 android:singleLine="true" />
         </android.support.design.widget.TextInputLayout>
 
