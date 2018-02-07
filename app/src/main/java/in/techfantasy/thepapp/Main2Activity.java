@@ -182,6 +182,27 @@ public class Main2Activity extends AppCompatActivity
                 gv.setVisibility(View.GONE);
                 atHome=false;
                 return true;
+            case R.id.trecent:
+                loadContent(new TrecentFragment());
+                drawer.closeDrawer(GravityCompat.START);
+                gv.setVisibility(View.GONE);
+                atHome=false;
+                return true;
+            case R.id.tcommunity:
+                loadContent(new TcommunityFragment());
+                drawer.closeDrawer(GravityCompat.START);
+                gv.setVisibility(View.GONE);
+                atHome=false;
+                return true;
+
+
+
+            case R.id.tabout:
+                loadContent(new AboutFragment());
+                drawer.closeDrawer(GravityCompat.START);
+                gv.setVisibility(View.GONE);
+                atHome=false;
+                return true;
         }
         //return false;
 
