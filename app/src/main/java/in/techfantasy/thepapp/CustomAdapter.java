@@ -1,6 +1,10 @@
 package in.techfantasy.thepapp;
 
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Context;
+import android.support.v4.view.GravityCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,9 +55,55 @@ class CustomAdapter extends BaseAdapter {
             public void onClick(View view) {
 
                 Toast.makeText(cc,""+view.getId(),Toast.LENGTH_SHORT).show();
+//
+//
+//                switch (view.getId()) {
+//                    case 0:
+//                        loadContent(new ThepCalculator());
+//                        gv.setVisibility(View.GONE);
+//
+//                    case 1:
+//                        loadContent(new DeclareFragment());
+//                        gv.setVisibility(View.GONE);
+//
+//                    case 2:
+//                        loadContent(new RecentFragment() );
+//                        gv.setVisibility(View.GONE);
+//
+//                    case 3:
+//                        loadContent(new TrollsFragment());
+//                        gv.setVisibility(View.GONE);
+//
+//                    case 4:
+//                        loadContent(new ThepStories());
+//                        gv.setVisibility(View.GONE);
+//
+//                    case 5:
+//                        loadContent(new ThepSongs());
+//                        gv.setVisibility(View.GONE);
+//
+//
+//                    case 6:
+//                        loadContent(new ThepCommunityFragment());
+//                        gv.setVisibility(View.GONE);
+//
+//
+//                    case 7:
+//                        loadContent(new TrollsFragment());
+//                        gv.setVisibility(View.GONE);
+//
+
+  //              }
+
             }
         });
         return row;
     }
+//    private void loadContent(Fragment f){
+//        FragmentManager fm=getFragmentManager();
+//        FragmentTransaction ft=fm.beginTransaction();
+//        ft.replace(R.id.frameLayout,f);
+//        ft.commit();
+//    }
 
 }
