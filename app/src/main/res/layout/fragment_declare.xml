@@ -15,7 +15,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Iam Happy to declare my ThepStory"
+            android:text="I am Happy to declare my ThepStory"
             android:textAlignment="center" />
 
         <android.support.design.widget.TextInputLayout
@@ -27,7 +27,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:digits="qwertzuiopasdfghjklyxcvbnm "
-                android:hint="Patner Name *"
+                android:hint="Partner Name*"
                 android:inputType="text"
                 android:singleLine="true" />
         </android.support.design.widget.TextInputLayout>
@@ -41,7 +41,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:digits="qwertzuiopasdfghjklyxcvbnm "
-                android:hint="Your Name *"
+                android:hint="Your Name*"
                 android:inputType="text"
                 android:singleLine="true" />
         </android.support.design.widget.TextInputLayout>
@@ -85,7 +85,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:maxLength="10"
-                android:hint="End Date * - dd/mm/yyyy"
+                android:hint="End Date* - dd/mm/yyyy"
                 android:inputType="date" />
         </android.support.design.widget.TextInputLayout>
         <Button
