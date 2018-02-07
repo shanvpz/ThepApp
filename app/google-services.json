@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "253996913930",
+    "firebase_url": "https://thepapp-60d9a.firebaseio.com",
+    "project_id": "thepapp-60d9a",
+    "storage_bucket": "thepapp-60d9a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:253996913930:android:20cb0ec72c6ce438",
+        "android_client_info": {
+          "package_name": "in.techfantasy.thepapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "253996913930-lgd3hegcq46buqishvvb718cud8vqido.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "in.techfantasy.thepapp",
+            "certificate_hash": "00904f6f72bc897d72f2aaa221373caca59def3d"
+          }
+        },
+        {
+          "client_id": "253996913930-35kt2uo8oslatcmri5auqk6mogaq2pbm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyASPSQ3gPWn0i3Dc-CnbSN22qcqWNUkPcs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "253996913930-35kt2uo8oslatcmri5auqk6mogaq2pbm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
