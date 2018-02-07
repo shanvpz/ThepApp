@@ -33,7 +33,8 @@ public class Main2Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     boolean doubleBackToExitPressedOnce = false;
-    boolean atHome=true;
+    public boolean atHome=true;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,7 +84,7 @@ public class Main2Activity extends AppCompatActivity
             drawer.closeDrawer(GravityCompat.START);
         } else {
 //            super.onBackPressed();
-            if (atHome) {
+            if (DBOps.atHome) {
                 if (doubleBackToExitPressedOnce) {
                     super.onBackPressed();
                     return;
@@ -103,7 +104,7 @@ public class Main2Activity extends AppCompatActivity
             else {
                 finish();
                 startActivity(new Intent(Main2Activity.this,Main2Activity.class));
-                atHome=true;
+                DBOps.atHome=true;
             }
         }
     }
@@ -142,42 +143,42 @@ public class Main2Activity extends AppCompatActivity
             case R.id.tCalc:
                 loadContent(new ThepCalculator());
                 drawer.closeDrawer(GravityCompat.START);
-                atHome=false;
+                DBOps.atHome=false;
                 return true;
             case R.id.tdeclare:
                 loadContent(new DeclareFragment());
                 drawer.closeDrawer(GravityCompat.START);
-                atHome=false;
+                DBOps.atHome=false;
                 return true;
             case R.id.tstories:
                 loadContent(new ThepStories());
                 drawer.closeDrawer(GravityCompat.START);
-                atHome=false;
+                DBOps.atHome=false;
                 return true;
             case R.id.tsongs:
                 loadContent(new ThepSongs());
                 drawer.closeDrawer(GravityCompat.START);
-                atHome=false;
+                DBOps.atHome=false;
                 return true;
             case R.id.ttroll:
                 loadContent(new TrollsFragment());
                 drawer.closeDrawer(GravityCompat.START);
-                atHome=false;
+                DBOps.atHome=false;
                 return true;
             case R.id.trecent:
                 loadContent(new TrecentFragment());
                 drawer.closeDrawer(GravityCompat.START);
-                atHome=false;
+                DBOps.atHome=false;
                 return true;
             case R.id.tcommunity:
                 loadContent(new TcommunityFragment());
                 drawer.closeDrawer(GravityCompat.START);
-                atHome=false;
+                DBOps.atHome=false;
                 return true;
             case R.id.tabout:
                 loadContent(new AboutFragment());
                 drawer.closeDrawer(GravityCompat.START);
-                atHome=false;
+                DBOps.atHome=false;
                 return true;
         }
         //return false;

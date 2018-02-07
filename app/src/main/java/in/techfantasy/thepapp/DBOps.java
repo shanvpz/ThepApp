@@ -13,6 +13,7 @@ import com.google.firebase.database.ValueEventListener;
  */
 
 public class DBOps {
+    public static boolean atHome=true;
     static String value;
     public static String imglinks;
     public static void getImageArray(){

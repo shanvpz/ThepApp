@@ -55,33 +55,38 @@ class CustomAdapter extends BaseAdapter {
             @Override
             public void onClick(View view) {
 
-                Toast.makeText(cc,""+view.getId(),Toast.LENGTH_SHORT).show();
-
-
                 switch (view.getId()) {
                     case 0:
                         loadContent(new ThepCalculator());
+                        DBOps.atHome=false;
                         break;
                     case 1:
                         loadContent(new DeclareFragment());
+                        DBOps.atHome=false;
                         break;
                     case 2:
                         loadContent(new TrecentFragment() );
+                        DBOps.atHome=false;
                         break;
                     case 3:
                         loadContent(new TrollsFragment());
+                        DBOps.atHome=false;
                         break;
                     case 4:
                         loadContent(new ThepStories());
+                        DBOps.atHome=false;
                         break;
                     case 5:
                         loadContent(new ThepSongs());
+                        DBOps.atHome=false;
                         break;
                     case 6:
                         loadContent(new TcommunityFragment());
+                        DBOps.atHome=false;
                         break;
                     case 7:
                         loadContent(new AboutFragment());
+                        DBOps.atHome=false;
                         break;
                 }
 
@@ -95,5 +100,6 @@ class CustomAdapter extends BaseAdapter {
         ft.replace(R.id.frameLayout,f);
         ft.commit();
     }
+
 }
 
