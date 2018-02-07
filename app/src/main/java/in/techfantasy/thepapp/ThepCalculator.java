@@ -37,14 +37,14 @@ public class ThepCalculator extends Fragment {
     private static final String ARG_PARAM2 = "param2";
     EditText etxtUrName,etxtPartnerName;
     int i,Total=0;
-    Button btnTCalc;
+    Button btnTCalc,btnceckagain;
     CustomGauge gauge;
     TextView txtMsg,txtgauge;
     String urName,partnerName;
     String[] nameArray;
     List<String> listAlpha=new ArrayList<String>();
     String[] alphabets={"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
-    String[] msgs={"1st","2nd","3rd","4th","5th","6th","7th","8th","9th"};
+    String[] msgs={"1st","2nd","3rd","4th","5th","6th","7th","8th","9th","10th"};
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -90,10 +90,12 @@ public class ThepCalculator extends Fragment {
         etxtPartnerName=v.findViewById(R.id.etxtpartnerName);
         etxtUrName=v.findViewById(R.id.etxtUrName);
         btnTCalc=v.findViewById(R.id.btnTCalc);
+        btnceckagain=v.findViewById(R.id.buttoncheckagain);
         txtMsg=v.findViewById(R.id.txtMsg);
         gauge=v.findViewById(R.id.gauge1);
         txtgauge=v.findViewById(R.id.textViewguage);
         gauge.setEndValue(700);
+        btnceckagain.setVisibility(View.GONE);
 
         btnTCalc.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,21 +119,33 @@ public class ThepCalculator extends Fragment {
                                     getActivity().runOnUiThread(new Runnable() {
                                         @Override
                                         public void run() {
-                                            gauge.setValue(200 + i * 5);
-                                            txtgauge.setText(Integer.toString(Total * 10));
+                                            gauge.setValue(200 + (i+10) * 5);
+                                            txtgauge.setText(Integer.toString(Total * 10+10));
                                         }
                                     });
-                                    Thread.sleep(50);
+                                    Thread.sleep(20);
                                 } catch (InterruptedException e) {
                                     e.printStackTrace();
                                 }
                             }
                         }
                     }.start();
-
+                    btnTCalc.setVisibility(View.GONE);
+                    btnceckagain.setVisibility(View.VISIBLE);
+                    etxtUrName.setEnabled(false);
+                    etxtPartnerName.setEnabled(false);
                 }
             }
         });
+
+        btnceckagain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                btnceckagain.setVisibility(View.GONE);
+                btnTCalc.setVisibility(View.VISIBLE);
+            }
+        });
+
 
         return v;
     }
