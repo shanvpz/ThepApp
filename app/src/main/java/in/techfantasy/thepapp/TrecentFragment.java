@@ -88,7 +88,7 @@ public class TrecentFragment extends Fragment {
                     val.add(ds.getValue(DeclarationModel.class));
               }//getValue(String.class);
                 for(DeclarationModel dm:val) {
-                    data.setText(dm.getUrName()+"+"+dm.getPartName()+"\n"+dm.getStory()+"\nStart Date:"+dm.getStDate()+"\nEnd Date:"+dm.getEnDate());
+                    data.setText(dm.getUrName()+"+"+dm.getPartName()+"\n"+dm.getStory()+"\nStart Date:"+dm.getStDate()+"\nEnd Date:"+dm.getEnDate()+"\n-----------------");
                 }
             }
 
