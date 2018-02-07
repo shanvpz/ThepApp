@@ -58,6 +58,9 @@ public class DeclarationModel {
         StDate = stDate;
         EnDate = enDate;
     }
+    public DeclarationModel(){
+
+    }
 
 
 }
