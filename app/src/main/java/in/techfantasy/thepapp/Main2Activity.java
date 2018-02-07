@@ -31,12 +31,9 @@ import android.widget.Toast;
 
 public class Main2Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    GridView gv;
+
     boolean doubleBackToExitPressedOnce = false;
-    TextView txtdecnav;
     boolean atHome=true;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +42,8 @@ public class Main2Activity extends AppCompatActivity
         DBOps.getImageArray();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        loadContent(new HomeFragment());
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -64,9 +63,6 @@ public class Main2Activity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        gv=findViewById(R.id.gridview);
-
-
         View hView =  navigationView.getHeaderView(0);
 
         TextView nav_user = (TextView)hView.findViewById(R.id.textViewdecnav);
@@ -77,15 +73,6 @@ public class Main2Activity extends AppCompatActivity
         TextView nav_title = (TextView)hView.findViewById(R.id.textViewtitlenav);
         nav_title.setTypeface(typeFace);
         nav_title.setText("തേപ്പ്");
-
-
-
-        int[] img={R.drawable.menu1,R.drawable.menu2,R.drawable.menu3,R.drawable.menu4,R.drawable.menu5,R.drawable.menu7,R.drawable.menu8,R.drawable.menu6};
-        gv.setAdapter(new CustomAdapter(Main2Activity.this,img));
-
-
-
-
 
     }
 
@@ -155,52 +142,41 @@ public class Main2Activity extends AppCompatActivity
             case R.id.tCalc:
                 loadContent(new ThepCalculator());
                 drawer.closeDrawer(GravityCompat.START);
-                gv.setVisibility(View.GONE);
                 atHome=false;
                 return true;
             case R.id.tdeclare:
                 loadContent(new DeclareFragment());
                 drawer.closeDrawer(GravityCompat.START);
-                gv.setVisibility(View.GONE);
                 atHome=false;
                 return true;
             case R.id.tstories:
                 loadContent(new ThepStories());
                 drawer.closeDrawer(GravityCompat.START);
-                gv.setVisibility(View.GONE);
                 atHome=false;
                 return true;
             case R.id.tsongs:
                 loadContent(new ThepSongs());
                 drawer.closeDrawer(GravityCompat.START);
-                gv.setVisibility(View.GONE);
                 atHome=false;
                 return true;
             case R.id.ttroll:
                 loadContent(new TrollsFragment());
                 drawer.closeDrawer(GravityCompat.START);
-                gv.setVisibility(View.GONE);
                 atHome=false;
                 return true;
             case R.id.trecent:
                 loadContent(new TrecentFragment());
                 drawer.closeDrawer(GravityCompat.START);
-                gv.setVisibility(View.GONE);
                 atHome=false;
                 return true;
             case R.id.tcommunity:
                 loadContent(new TcommunityFragment());
                 drawer.closeDrawer(GravityCompat.START);
-                gv.setVisibility(View.GONE);
                 atHome=false;
                 return true;
-
-
-
             case R.id.tabout:
                 loadContent(new AboutFragment());
                 drawer.closeDrawer(GravityCompat.START);
-                gv.setVisibility(View.GONE);
                 atHome=false;
                 return true;
         }
@@ -210,8 +186,6 @@ public class Main2Activity extends AppCompatActivity
         return true;
     }
 
-
-
     private void loadContent(Fragment f){
         FragmentManager fm=getFragmentManager();
         FragmentTransaction ft=fm.beginTransaction();
@@ -219,12 +193,4 @@ public class Main2Activity extends AppCompatActivity
         ft.commit();
     }
 
-    public static int convertDpToPixels(float dp, Context context){
-        Resources resources = context.getResources();
-        return (int) TypedValue.applyDimension(
-                TypedValue.COMPLEX_UNIT_DIP,
-                dp,
-                resources.getDisplayMetrics()
-        );
-    }
 }
