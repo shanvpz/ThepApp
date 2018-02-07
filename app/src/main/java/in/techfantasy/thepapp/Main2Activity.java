@@ -80,7 +80,7 @@ public class Main2Activity extends AppCompatActivity
 
 
 
-        int[] img={R.drawable.menu1,R.drawable.menu2,R.drawable.menu03,R.drawable.menu04,R.drawable.menu1,R.drawable.menu2,R.drawable.menu03,R.drawable.menu04};
+        int[] img={R.drawable.menu1,R.drawable.menu2,R.drawable.menu3,R.drawable.menu4,R.drawable.menu5,R.drawable.menu7,R.drawable.menu8,R.drawable.menu6};
         gv.setAdapter(new CustomAdapter(Main2Activity.this,img));
 
 
