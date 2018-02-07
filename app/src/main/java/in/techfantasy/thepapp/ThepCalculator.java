@@ -93,8 +93,8 @@ public class ThepCalculator extends Fragment {
         etxtPartnerName=v.findViewById(R.id.etxtpartnerName);
         etxtUrName=v.findViewById(R.id.etxtUrName);
         btnTCalc=v.findViewById(R.id.btnTCalc);
-       txtnam1=v.findViewById(R.id.txtname1);
-       txtnam2=v.findViewById(R.id.txtname2);
+        txtnam1=v.findViewById(R.id.txtname1);
+        txtnam2=v.findViewById(R.id.txtname2);
         linearlay=v.findViewById(R.id.linearlay);
         btnceckagain=v.findViewById(R.id.buttoncheckagain);
         txtMsg=v.findViewById(R.id.txtMsg);
@@ -181,7 +181,6 @@ public class ThepCalculator extends Fragment {
         Total=0;
         urName=urName.toUpperCase();
         partnerName=partnerName.toUpperCase();
-
         StringBuilder sb=new StringBuilder();
         sb.append(urName);
         sb.append(partnerName);
@@ -209,7 +208,6 @@ public class ThepCalculator extends Fragment {
                 Total = Total % 10;
             }
         }
-
         return msgs[Total];
     }
 
