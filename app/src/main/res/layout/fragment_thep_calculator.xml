@@ -39,12 +39,48 @@
         </android.support.design.widget.TextInputLayout>
 
         <LinearLayout
+
             android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal">
+
+            <LinearLayout
+                android:id="@+id/linearlay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/txtname1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="your name"
+                    android:textColor="@color/colorAccent"
+                    android:textAlignment="center" />
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/brokenheart" />
+
+                <TextView
+                    android:id="@+id/txtname2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="your name"
+                    android:textColor="@color/colorAccent"
+                    android:textAlignment="center" />
+
+            </LinearLayout>
+
+
         <RelativeLayout
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="6dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -88,6 +124,8 @@
             android:layout_height="wrap_content"
             android:text="Default Text shoul updated"
             android:textAlignment="center"
+            android:textColor="@color/colorAccent"
+            android:textSize="16dp"
             android:textStyle="bold|italic" />
 
         </LinearLayout>

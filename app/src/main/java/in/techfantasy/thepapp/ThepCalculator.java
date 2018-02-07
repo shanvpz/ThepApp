@@ -1,6 +1,7 @@
 package in.techfantasy.thepapp;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,12 +41,13 @@ public class ThepCalculator extends Fragment {
     int i,Total=0;
     Button btnTCalc,btnceckagain;
     CustomGauge gauge;
-    TextView txtMsg,txtgauge;
+    LinearLayout linearlay;
+    TextView txtMsg,txtgauge,txtnam1,txtnam2;
     String urName,partnerName;
     String[] nameArray;
     List<String> listAlpha=new ArrayList<String>();
     String[] alphabets={"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
-    String[] msgs={"1st","2nd","3rd","4th","5th","6th","7th","8th","9th","10th"};
+    String[] msgs={"ഭാഗ്യവാൻ /ഭാഗ്യവതി ","നിങ്ങൾ സേഫ് സോണിൽ ആണ് ","കാര്യങ്ങൾ കുഴപ്പമില്ലാതെ പോകും ","നിങ്ങളുടെ വിശ്വാസം നിങ്ങളെ രക്ഷിക്കും","നിങ്ങളുടെ പ്രതീക്ഷകൾ സത്യമായിത്തീരും","പ്രതീക്ഷകൾ നല്ലതുമാകാം ചീത്തയുമാകാം","നിങ്ങൾ ആഗ്രഹിക്കുന്നത് നടന്നില്ലായെന്നുവരാം ","നിങ്ങളുടെ പ്രതീക്ഷകൾക്കപ്പുറമാകാം കാര്യങ്ങൾ ","നിങ്ങൾ ആഴങ്ങളിലേക്ക് അടുത്തുകൊണ്ടിരിക്കുന്നു","ഇനി ഒന്നും പറഞ്ഞിട്ട് കാര്യമില്ല... സഹിക്കുക !"};
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -90,12 +93,21 @@ public class ThepCalculator extends Fragment {
         etxtPartnerName=v.findViewById(R.id.etxtpartnerName);
         etxtUrName=v.findViewById(R.id.etxtUrName);
         btnTCalc=v.findViewById(R.id.btnTCalc);
+       txtnam1=v.findViewById(R.id.txtname1);
+       txtnam2=v.findViewById(R.id.txtname2);
+        linearlay=v.findViewById(R.id.linearlay);
         btnceckagain=v.findViewById(R.id.buttoncheckagain);
         txtMsg=v.findViewById(R.id.txtMsg);
         gauge=v.findViewById(R.id.gauge1);
         txtgauge=v.findViewById(R.id.textViewguage);
         gauge.setEndValue(700);
         btnceckagain.setVisibility(View.GONE);
+        linearlay.setVisibility(View.INVISIBLE);
+        txtMsg.setVisibility(View.INVISIBLE);
+
+
+        Typeface typeFace = Typeface.createFromAsset(getActivity().getAssets(),"ML-NILA03_NewLipi.ttf");
+        txtMsg.setTypeface(typeFace);
 
         btnTCalc.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,7 +121,10 @@ public class ThepCalculator extends Fragment {
                     Toast.makeText(getActivity(), "Fill Your name & Partner name", Toast.LENGTH_SHORT).show();
                 } else {
 
+                    txtnam1.setText(urName.toUpperCase());
+                    txtnam2.setText(partnerName.toUpperCase());
                     txtMsg.setText(TCALC(urName, partnerName));
+                    txtMsg.setVisibility(View.VISIBLE);
                     CalcModel entry = new CalcModel(urName, partnerName,""+Total);
                     mDatabase.child(entryId).setValue(entry);
                     new Thread() {
@@ -134,6 +149,10 @@ public class ThepCalculator extends Fragment {
                     btnceckagain.setVisibility(View.VISIBLE);
                     etxtUrName.setEnabled(false);
                     etxtPartnerName.setEnabled(false);
+                    etxtPartnerName.clearFocus();
+
+                    linearlay.setVisibility(View.VISIBLE);
+
                 }
             }
         });
@@ -143,6 +162,14 @@ public class ThepCalculator extends Fragment {
             public void onClick(View view) {
                 btnceckagain.setVisibility(View.GONE);
                 btnTCalc.setVisibility(View.VISIBLE);
+                linearlay.setVisibility(View.INVISIBLE);
+                etxtUrName.setEnabled(true);
+                etxtPartnerName.setEnabled(true);
+                etxtUrName.getText().clear();
+                etxtPartnerName.getText().clear();
+                gauge.setValue(200);
+                txtgauge.setText(Integer.toString(0));
+                txtMsg.setVisibility(View.INVISIBLE);
             }
         });
 
