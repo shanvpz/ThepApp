@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 class CustomAdapter extends BaseAdapter {
 
@@ -38,15 +39,21 @@ class CustomAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
+    public View getView(final int i, View view, ViewGroup viewGroup) {
        View row;
         LayoutInflater inflater = ( LayoutInflater )cc. getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         row=inflater.inflate(R.layout.custom,viewGroup,false);
         im=row.findViewById(R.id.imageView);
         im.setImageResource(img[i]);
+        im.setId(i);
+        im.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
-
-
+                Toast.makeText(cc,""+view.getId(),Toast.LENGTH_SHORT).show();
+            }
+        });
         return row;
     }
+
 }
