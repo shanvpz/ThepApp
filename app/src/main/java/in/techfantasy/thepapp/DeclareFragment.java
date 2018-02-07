@@ -4,6 +4,8 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -78,6 +80,76 @@ public class DeclareFragment extends Fragment {
         etxtStartDate=v.findViewById(R.id.date1);
         etxtEndDate=v.findViewById(R.id.date2);
         btnDeclare=v.findViewById(R.id.btnDeclare);
+
+
+
+
+        etxtStartDate.addTextChangedListener(new TextWatcher() {
+            int prevL = 0;
+
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                prevL = etxtStartDate.getText().toString().length();
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                int length = editable.length();
+                if ((prevL < length) && (length == 2 || length == 5)) {
+                    editable.append("/");
+                }
+            }
+        });
+
+
+
+        etxtEndDate.addTextChangedListener(new TextWatcher() {
+            int prevL = 0;
+
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                prevL = etxtEndDate.getText().toString().length();
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                int length = editable.length();
+                if ((prevL < length) && (length == 2 || length == 5)) {
+                    editable.append("/");
+                }
+            }
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         btnDeclare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -92,7 +164,7 @@ public class DeclareFragment extends Fragment {
                     String declarationId = mDatabase.push().getKey();
                     DeclarationModel dm = new DeclarationModel(myname,hername,story,startdate,enddate);
                     if(myname.equals("")||hername.equals("")||startdate.equals("")||enddate.equals("")){
-                        Toast.makeText(getActivity().getApplicationContext(),"All fields are mandatory!",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity().getApplicationContext(),"All fields with * are mandatory!",Toast.LENGTH_SHORT).show();
                     }
                     else {
                         mDatabase.child(declarationId).setValue(dm);
