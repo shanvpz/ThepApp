@@ -62,27 +62,28 @@ class CustomAdapter extends BaseAdapter {
                 switch (view.getId()) {
                     case 0:
                         loadContent(new ThepCalculator());
-
+                        break;
                     case 1:
                         loadContent(new DeclareFragment());
-
+                        break;
                     case 2:
                         loadContent(new TrecentFragment() );
-
+                        break;
                     case 3:
                         loadContent(new TrollsFragment());
-
+                        break;
                     case 4:
                         loadContent(new ThepStories());
-
+                        break;
                     case 5:
                         loadContent(new ThepSongs());
-
+                        break;
                     case 6:
                         loadContent(new TcommunityFragment());
-
+                        break;
                     case 7:
                         loadContent(new AboutFragment());
+                        break;
                 }
 
             }
