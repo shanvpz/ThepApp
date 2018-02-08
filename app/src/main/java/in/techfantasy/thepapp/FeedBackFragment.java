@@ -107,20 +107,21 @@ public class FeedBackFragment extends Fragment {
 
                 if(nam.equals("")||msg.equals("")){
                     Toast.makeText(getActivity(),"All fields are mandatory!",Toast.LENGTH_SHORT).show();
-                }
+                }else {
 
-                Intent i = new Intent(Intent.ACTION_SEND);
-                i.setType("message/rfc822");
-                i.putExtra(Intent.EXTRA_EMAIL  , new String[]{"appthepp@gmail.com"});
-                i.putExtra(Intent.EXTRA_SUBJECT, "FeedBack - Thepp App - "+nam);
-                i.putExtra(Intent.EXTRA_TEXT   , msg);
-                try {
-                    startActivityForResult(Intent.createChooser(i, "Send mail..."),123);
-                    //startActivity(Intent.createChooser(i, "Send mail..."));
-                    check=true;
+                    Intent i = new Intent(Intent.ACTION_SEND);
+                    i.setType("message/rfc822");
+                    i.putExtra(Intent.EXTRA_EMAIL, new String[]{"appthepp@gmail.com"});
+                    i.putExtra(Intent.EXTRA_SUBJECT, "FeedBack - Thepp App - " + nam);
+                    i.putExtra(Intent.EXTRA_TEXT, msg);
+                    try {
+                        startActivityForResult(Intent.createChooser(i, "Send mail..."), 123);
+                        //startActivity(Intent.createChooser(i, "Send mail..."));
+                        check = true;
 
-                } catch (android.content.ActivityNotFoundException ex) {
-                    Toast.makeText(getActivity(), "There are no email clients installed.", Toast.LENGTH_SHORT).show();
+                    } catch (android.content.ActivityNotFoundException ex) {
+                        Toast.makeText(getActivity(), "There are no email clients installed.", Toast.LENGTH_SHORT).show();
+                    }
                 }
 
             }
