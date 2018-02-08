@@ -29,6 +29,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
+
 public class Main2Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -75,6 +77,17 @@ public class Main2Activity extends AppCompatActivity
         nav_title.setTypeface(typeFace);
         nav_title.setText("തേപ്പ്");
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        try{
+            File f = new File(getBaseContext().getExternalFilesDir("Temp"), "Temporary_Trollz.jpg");
+            f.delete();
+        }catch (Exception E){
+
+        }
     }
 
     @Override
@@ -193,5 +206,7 @@ public class Main2Activity extends AppCompatActivity
         ft.replace(R.id.frameLayout,f);
         ft.commit();
     }
+
+
 
 }
