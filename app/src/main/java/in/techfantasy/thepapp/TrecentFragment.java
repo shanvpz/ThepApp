@@ -82,14 +82,16 @@ public class TrecentFragment extends Fragment {
         rootRef = FirebaseDatabase.getInstance().getReference();
         rootRef.addValueEventListener(new ValueEventListener() {
             List<DeclarationModel> val=new ArrayList<>();
+            String list;
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
               for(DataSnapshot ds:dataSnapshot.child("DeclarationModel").getChildren()){
                     val.add(ds.getValue(DeclarationModel.class));
               }//getValue(String.class);
                 for(DeclarationModel dm:val) {
-                    data.setText(dm.getUrName()+"+"+dm.getPartName()+"\n"+dm.getStory()+"\nStart Date:"+dm.getStDate()+"\nEnd Date:"+dm.getEnDate()+"\n-----------------");
+                    list=list+(dm.getUrName()+"+"+dm.getPartName()+"\n"+dm.getStory()+"\nStart Date:"+dm.getStDate()+"\nEnd Date:"+dm.getEnDate()+"\n-----------------");
                 }
+                data.setText(list);
             }
 
             @Override
