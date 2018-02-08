@@ -193,6 +193,11 @@ public class Main2Activity extends AppCompatActivity
                 drawer.closeDrawer(GravityCompat.START);
                 DBOps.atHome=false;
                 return true;
+            case R.id.tfeed:
+                loadContent(new FeedBackFragment());
+                drawer.closeDrawer(GravityCompat.START);
+                DBOps.atHome=false;
+                return true;
         }
         //return false;
 
