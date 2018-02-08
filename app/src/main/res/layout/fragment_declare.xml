@@ -15,8 +15,10 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:text="I am Happy to declare my ThepStory"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:textSize="16sp" />
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
@@ -57,7 +59,10 @@
                 android:layout_height="100dp"
                 android:digits="qwertzuiopasdfghjklyxcvbnm "
                 android:hint="Thep Story"
-                android:inputType="text"
+
+                android:inputType="textMultiLine"
+                android:minHeight="80sp"
+                android:isScrollContainer="true"
                 />
         </android.support.design.widget.TextInputLayout>
 

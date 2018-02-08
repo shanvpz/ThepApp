@@ -33,8 +33,12 @@
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/feedmsg"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="wrap_content"
                 android:inputType="textMultiLine"
+
+                android:minHeight="80sp"
+                android:isScrollContainer="true"
+
                 android:hint="Type your FeedBack" />
         </android.support.design.widget.TextInputLayout>
 
