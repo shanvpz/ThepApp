@@ -1,12 +1,14 @@
 package in.techfantasy.thepapp;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 
 /**
@@ -22,6 +24,7 @@ public class AboutFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    TextView txtabt;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -63,8 +66,18 @@ public class AboutFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View v=inflater.inflate(R.layout.fragment_about, container, false);
+        txtabt=v.findViewById(R.id.textviewabout);
+
+        Typeface typeFace = Typeface.createFromAsset(getActivity().getAssets(),"ML-NILA03_NewLipi.ttf");
+        txtabt.setTypeface(typeFace);
+        txtabt.setText("ജീവിതത്തിൽ ഒരു തേപ്പ് എങ്കിലും കിട്ടിയവരും കൊടുത്തവരും ആയിരിക്കും കൂടുതൽ ആളുകളും.\nചിലർ തേപ്പ് കിട്ടിയതിനു ശേഷം ജീവിതത്തിൽ എല്ലാം നഷ്ടപ്പെട്ടവരെ പോലെ നടക്കും മറ്റുചിലർ ഒന്ന് പോയാൽ മറ്റൊന്ന് എന്ന് വിചാരിച്ചു ജീവിക്കും, മികച്ചത് കിട്ടുമെന്ന് തോന്നിക്കഴിഞ്ഞാൽ ആത്മാർത്ഥ പ്രണയം പോലും ഉപേക്ഷിക്കുന്ന ചിലരും ഈ ഭൂമിയിൽ ഉണ്ട്.\nഅങ്ങനെ നല്ല ജീവിതം കിട്ടും അല്ലെങ്കിൽ കുറച്ചു കൂടി നല്ലത് എനിക്ക് കിട്ടുമല്ലോ എന്ന് കരുതി തന്നെ ജീവന് തുല്യം സ്നേഹിക്കുന്നത് പോലും മറന്നു കളയുന്ന പ്രതിഭാസത്തെ ആണല്ലോ തേപ്പ് എന്ന് അഭിസംബോധന ചെയ്യപ്പെടുന്നത്.\nആണുങ്ങളും പെണ്ണുങ്ങളും ഒരേപോലെ തന്നെ ആ പ്രതിഭാസത്തിനു പാത്രങ്ങൾ ആകേണ്ടി വരുന്നു ചിലപ്പോ അതിനു കാരണങ്ങളും ആകുന്നു.\nഎന്തായാലും ഞങ്ങൾ കൂടുതൽ സാഹിത്യം പറയുന്നില്ല... ഈ പ്രണയിക്കുന്നവരുടെ മാസത്തിൽ പ്രണയം നഷ്ടപ്പെട്ടവർക്കും നഷ്ടപെടുത്തിയവർക്കും എല്ലാം വേണ്ടി ഞങ്ങൾ ചെറിയൊരു അപ്ലിക്കേഷൻ സമർപ്പിക്കുന്നു...\n");
+
+
+
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_about, container, false);
+        return v;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
