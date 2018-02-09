@@ -1,82 +1,99 @@
-<ScrollView android:layout_height="match_parent"
-    android:layout_width="match_parent"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#fff"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-<LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-    <android.support.v7.widget.CardView
+    android:layout_height="match_parent">
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/cardBulb"
-        android:layout_marginTop="10dp"
-        app:cardCornerRadius="5dp"
-        app:cardElevation="25dp">
+        android:orientation="vertical"
+       >
 
-        <LinearLayout
+        <android.support.v7.widget.CardView
+            android:id="@+id/cardBulb"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp">
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
 
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_gravity="center"
-                android:src="@drawable/idea" />
-            <TextView
-                android:id="@+id/textView"
+            app:cardCornerRadius="5dp"
+            app:cardElevation="25dp">
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Exceptions"
-                android:textAlignment="center"
-                android:textColor="@color/cardview_dark_background"
-                android:textSize="30sp" />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Try . Catch . Build"
-                android:textAlignment="center"
-                android:textSize="16sp" />
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp">
 
-            <TextView
-                android:id="@+id/textViewemail"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="e4exceptions@gmail.com"
-                android:textAlignment="center"
-                android:textSize="14sp" />
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/idea" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Tap to view more"
-                android:textAlignment="center"
-                android:textSize="14sp" />
-        </LinearLayout>
-    </android.support.v7.widget.CardView>
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Exceptions"
+                    android:textAlignment="center"
+                    android:textColor="@color/cardview_dark_background"
+                    android:textSize="30sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Try . Catch . Build"
+                    android:textAlignment="center"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/textViewemail"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="e4exceptions@gmail.com"
+                    android:textAlignment="center"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
 
 
-    <android.support.v7.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="5dp"
-        android:layout_marginTop="10dp"
-        app:cardElevation="25dp">
-        <TextView
+        <android.support.v7.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="About Thep"
-            android:textAlignment="center"
-            android:textSize="14sp" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            app:cardCornerRadius="5dp"
+            app:cardElevation="25dp"
+           >
 
-    </android.support.v7.widget.CardView>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center_vertical">
 
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:background="@drawable/theep02"
+                    android:layout_gravity="center"/>
 
-</LinearLayout>
+                <TextView
+                    android:id="@+id/textviewabout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="About Thep"
+                    android:textAlignment="center"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+    </LinearLayout>
 
 </ScrollView>

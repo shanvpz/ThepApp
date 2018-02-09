@@ -29,6 +29,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
+
 public class Main2Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -78,6 +80,17 @@ public class Main2Activity extends AppCompatActivity
     }
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        try{
+            File f = new File(getBaseContext().getExternalFilesDir("Temp"), "Temporary_Trollz.jpg");
+            f.delete();
+        }catch (Exception E){
+
+        }
+    }
+
+    @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
@@ -124,9 +137,10 @@ public class Main2Activity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -180,6 +194,11 @@ public class Main2Activity extends AppCompatActivity
                 drawer.closeDrawer(GravityCompat.START);
                 DBOps.atHome=false;
                 return true;
+            case R.id.tfeed:
+                loadContent(new FeedBackFragment());
+                drawer.closeDrawer(GravityCompat.START);
+                DBOps.atHome=false;
+                return true;
         }
         //return false;
 
@@ -193,5 +212,7 @@ public class Main2Activity extends AppCompatActivity
         ft.replace(R.id.frameLayout,f);
         ft.commit();
     }
+
+
 
 }

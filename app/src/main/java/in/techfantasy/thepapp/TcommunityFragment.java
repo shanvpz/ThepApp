@@ -4,9 +4,13 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
+import android.widget.TextView;
 
 
 /**
@@ -22,7 +26,8 @@ public class TcommunityFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+    TextView txthtml;
+    WebView wb;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -64,7 +69,23 @@ public class TcommunityFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tcommunity, container, false);
+        View v=inflater.inflate(R.layout.fragment_tcommunity, container, false);
+      //  txthtml=v.findViewById(R.id.txthtml);
+        //txthtml.setText(Html.fromHtml(" <ul><li><a href=\"https://www.facebook.com/%E0%B4%A4%E0%B5%87%E0%B4%AA%E0%B5%8D%E0%B4%AA%E0%B5%8D-Theppu-1591277881164162/?ref=br_rs\">Theppu</a></li></ul>"));
+
+        wb=v.findViewById(R.id.webview);
+        //wb.getSettings().setLoadWithOverviewMode(true);
+       // wb.getSettings().setUseWideViewPort(true);
+        wb.setWebViewClient(new WebViewClient());
+        final String mimeType = "text/html";
+        final String encoding = "UTF-8";
+        wb.getSettings().setJavaScriptEnabled(true);
+        String html = "<h2>FaceBook Links</h2><br><ul style=\"list-style-type: none;font-size: 20px;\"><li><a href=\"https://www.facebook.com/%E0%B4%A4%E0%B5%87%E0%B4%AA%E0%B5%8D%E0%B4%AA%E0%B5%8D-Theppu-1591277881164162/?ref=br_rs\">Theppu</a></li><li><a href=\"https://www.facebook.com/CopyPasteAvk/?ref=br_rs\">Theppu Gang</a></li><li><a href=\"https://www.facebook.com/theppu787/?ref=br_rs\">Theppu Productions</a></li><li><a href=\"https://www.facebook.com/Theppu-petti-735983669906528/?ref=br_rs\">Theppu Petti</a></li><li><a href=\"https://www.facebook.com/Theppu-kittiyavar-248675448987361/?ref=br_rs\">Theppu Kittiyavar</a></li><li><a href=\"https://www.facebook.com/Theppu-KATTA-Theppu-1262802060500778/?ref=br_rs\">Katta Theppu</a></li><li><a href=\"https://www.facebook.com/ThEpPuPetTiIiIii/?ref=br_rs\">Theppu Petti</a></li><li><a href=\"https://www.facebook.com/Theppu1/?ref=br_rs\">Theppu</a></li><li><a href=\"https://www.facebook.com/thenjaliya/?ref=br_rs\">Theppu New</a></li></ul>";
+
+
+        wb.loadDataWithBaseURL("", html, mimeType, encoding, "");
+
+        return v;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

@@ -80,10 +80,6 @@ public class DeclareFragment extends Fragment {
         etxtStartDate=v.findViewById(R.id.date1);
         etxtEndDate=v.findViewById(R.id.date2);
         btnDeclare=v.findViewById(R.id.btnDeclare);
-
-
-
-
         etxtStartDate.addTextChangedListener(new TextWatcher() {
             int prevL = 0;
 
@@ -129,25 +125,6 @@ public class DeclareFragment extends Fragment {
                 }
             }
         });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         btnDeclare.setOnClickListener(new View.OnClickListener() {

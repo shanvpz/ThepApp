@@ -38,9 +38,9 @@
     <item android:title="Communicate">
         <menu>
             <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
+                android:id="@+id/tfeed"
+                android:icon="@drawable/handholdingupapen"
+                android:title="FeedBack" />
             <item
                 android:id="@+id/tabout"
                 android:icon="@drawable/groupofmen"
