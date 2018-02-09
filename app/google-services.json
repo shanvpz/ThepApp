@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "253996913930-2hvum9e38trv4f1uthfcdv0rbqobssjj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "in.techfantasy.thepapp",
+            "certificate_hash": "7db12483bd5eef6b31c0e8890d2e074b46e5e624"
+          }
+        },
+        {
           "client_id": "253996913930-lgd3hegcq46buqishvvb718cud8vqido.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
