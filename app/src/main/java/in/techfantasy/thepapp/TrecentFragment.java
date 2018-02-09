@@ -2,12 +2,16 @@ package in.techfantasy.thepapp;
 
 import android.content.Context;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -33,7 +37,11 @@ public class TrecentFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    TextView data;
+    //TextView data;
+    ListView lv;
+    ProgressBar progressBar;
+    DatabaseReference rootRef;
+    List<DeclarationModel> val=new ArrayList<>();
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -68,7 +76,9 @@ public class TrecentFragment extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+
         }
+
     }
 
     @Override
@@ -77,29 +87,18 @@ public class TrecentFragment extends Fragment {
         // Inflate the layout for this fragment
         final View v = inflater.inflate(R.layout.fragment_trecent, container, false);
 
-        data=v.findViewById(R.id.datafromserver);
-        DatabaseReference rootRef;
+        //data=v.findViewById(R.id.datafromserver);
+        lv=v.findViewById(R.id.declarationList);
+        progressBar = v.findViewById(R.id.progressBar);
+
         rootRef = FirebaseDatabase.getInstance().getReference();
-        rootRef.addValueEventListener(new ValueEventListener() {
-            List<DeclarationModel> val=new ArrayList<>();
-            String list;
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-              for(DataSnapshot ds:dataSnapshot.child("DeclarationModel").getChildren()){
-                    val.add(ds.getValue(DeclarationModel.class));
-              }//getValue(String.class);
-                for(DeclarationModel dm:val) {
-                    list=list+(dm.getUrName()+"+"+dm.getPartName()+"\n"+dm.getStory()+"\nStart Date:"+dm.getStDate()+"\nEnd Date:"+dm.getEnDate()+"\n-----------------");
-                }
-                data.setText(list);
-            }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
+        /////////////////////////////////////////////////////
 
-            }
-        });
+        ////////////////////////////////////////////////////
 
+
+        //progressBar.setVisibility(View.VISIBLE);
 
         return v;
     }
@@ -109,6 +108,81 @@ public class TrecentFragment extends Fragment {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
         }
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        new DownloadWebPageTask().execute();
+    }
+
+
+    /////////////////////////////////////////////////////////////
+
+    class DownloadWebPageTask extends AsyncTask<String, Integer, List<DeclarationModel>> {
+
+        @Override
+        protected void onPreExecute() {
+            //textView.setText("Hello !!!");
+
+            progressBar.setVisibility(View.VISIBLE);
+            super.onPreExecute();
+        }
+
+        @Override
+        protected void onProgressUpdate(Integer... values) {
+            super.onProgressUpdate(values);
+
+        }
+
+        @Override
+        protected List<DeclarationModel> doInBackground(String... urls) {
+
+            rootRef.addValueEventListener(new ValueEventListener() {
+
+
+                String list;
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    for(DataSnapshot ds:dataSnapshot.child("DeclarationModel").getChildren()){
+                        val.add(ds.getValue(DeclarationModel.class));
+                    }//getValue(String.class);
+                    for(DeclarationModel dm:val) {
+                        list=list+(dm.getUrName()+"+"+dm.getPartName()+"\n"+dm.getStory()+"\nStart Date:"+dm.getStDate()+"\nEnd Date:"+dm.getEnDate()+"\n-----------------");
+                    }
+                    //data.setText(list);
+                    Log.i("data",list);
+
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+            return val;
+        }
+
+        @Override
+        protected void onPostExecute(List<DeclarationModel> val) {
+            progressBar.setVisibility(View.INVISIBLE);
+            lv.setAdapter(new DeclareListAdapter(getActivity(),R.layout.declarationlistitem,val));
+        }
+    }
+    /////////////////////////////////////////////////////////
+    @Override
+    public void onStart() {
+        super.onStart();
+        
+        new DownloadWebPageTask().execute();
+        //Log.i("Count",String.valueOf(val.size()));
+        //getFragmentManager().beginTransaction().replace(R.id.frameLayout,new TrecentFragment());
     }
 
     @Override
