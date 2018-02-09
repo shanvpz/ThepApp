@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/txtUrName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="YourName"
+        android:textColor="@color/colorAccent"
+        android:textAlignment="center"/>
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="25dp"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/brokenheart" />
+
+    <TextView
+        android:id="@+id/txtPartName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="your name"
+        android:textColor="@color/colorAccent"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/txtDates"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Dates"
+        android:textColor="@color/colorAccent"
+        android:textAlignment="center" />
+    <TextView
+        android:id="@+id/txtStory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Story"
+        android:textColor="@color/colorAccent"
+        android:textAlignment="center" />
+
+</LinearLayout>
