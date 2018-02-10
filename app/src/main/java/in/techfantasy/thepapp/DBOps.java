@@ -1,6 +1,7 @@
 package in.techfantasy.thepapp;
 
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -15,7 +16,7 @@ import com.google.firebase.database.ValueEventListener;
 public class DBOps {
     public static boolean atHome=true;
     static String value;
-    public static String imglinks;
+    public static String[] imglinks;
     public static void getImageArray(){
 
         DatabaseReference rootRef;
@@ -26,7 +27,12 @@ public class DBOps {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 value =  dataSnapshot.child("TrollLinks").getValue(String.class);
                 Log.i("data from db", value);
-                imglinks=value;
+                try {
+                    imglinks = value.split(",");
+                }
+                catch (Exception e){
+                    Log.e("from dbops",e.getMessage());
+                }
             }
 
             @Override

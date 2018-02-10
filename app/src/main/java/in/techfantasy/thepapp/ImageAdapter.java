@@ -32,7 +32,8 @@ public class ImageAdapter extends BaseAdapter {
 //            "http://bestgamesforandroidphone.com/wp-content/uploads/2016/06/free-download-best-games.jpg",
 //            "https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/d8415e4e-e1cd-4e45-b1ff-b624efe1a418/3.jpg",
 //    };
-    public String[] mThumbIds=DBOps.imglinks.split(",");
+
+    public String[] mThumbIds=DBOps.imglinks;
 
     public ImageAdapter(Context c) {
         mContext = c;
@@ -40,7 +41,14 @@ public class ImageAdapter extends BaseAdapter {
     }
 
     public int getCount() {
-        return mThumbIds.length;
+        int count=0;
+        try {
+            count = mThumbIds.length;
+        }
+        catch (Exception e){
+            Log.e("from imageadapter",e.getMessage());
+        }
+        return count;
     }
 
     @Override

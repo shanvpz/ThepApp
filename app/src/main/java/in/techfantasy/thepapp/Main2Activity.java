@@ -1,16 +1,22 @@
 package in.techfantasy.thepapp;
 
+import android.*;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.Typeface;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.provider.Settings;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,16 +41,23 @@ public class Main2Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     boolean doubleBackToExitPressedOnce = false;
-    public boolean atHome=true;
+    final int REQUEST_CODE_ASK_PERMISSIONS = 123;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
-        DBOps.getImageArray();
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        if (Build.VERSION.SDK_INT < 23) {
+            //your code here
+        } else {
+            requestruntimePermission();
+        }
 
         loadContent(new HomeFragment());
 
@@ -214,5 +227,45 @@ public class Main2Activity extends AppCompatActivity
     }
 
 
+    private void requestruntimePermission() {
+
+        int hasCameraPermission = ActivityCompat.checkSelfPermission(Main2Activity.this, android.Manifest.permission.READ_EXTERNAL_STORAGE)+
+                ActivityCompat.checkSelfPermission(Main2Activity.this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE);
+
+        if (hasCameraPermission != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(Main2Activity.this, new String[]{android.Manifest.permission.READ_EXTERNAL_STORAGE, android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_CODE_ASK_PERMISSIONS);
+        } else {
+            //Toast.makeText(DefaultActivity.this, "Welcome", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        switch (requestCode) {
+            case REQUEST_CODE_ASK_PERMISSIONS:
+                // Check if the only required permission has been granted
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    Toast.makeText(this, "Runtime Permission is Granted", Toast.LENGTH_SHORT).show();
+                } else {
+                    LinearLayout layout;
+                    layout=findViewById(R.id.drawer_layout);
+
+                    Snackbar.make(layout, "Please enable permission from settings",
+                            Snackbar.LENGTH_INDEFINITE)
+                            .setAction("OK", new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    Intent intent = new Intent();
+                                    intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                                    Uri uri = Uri.fromParts("package", Main2Activity.this.getPackageName(), null);
+                                    intent.setData(uri);
+                                    startActivity(intent);
+                                }
+                            })
+                            .show();
+                }
+                break;
+        }
+    }
 
 }

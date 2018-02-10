@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.Toast;
 
 
 /**
@@ -69,7 +70,9 @@ public class TrollsFragment extends Fragment {
         // Inflate the layout for this fragment
         View v =  inflater.inflate(R.layout.fragment_trolls, container, false);
         GridView gridview = v.findViewById(R.id.gridview);
+
         gridview.setAdapter(new ImageAdapter(getActivity()));
+
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
                 Intent i = new Intent(getActivity(), FullImageActivity.class);
