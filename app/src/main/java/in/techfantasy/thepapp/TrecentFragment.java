@@ -1,10 +1,12 @@
 package in.techfantasy.thepapp;
 
+import android.app.AlertDialog;
+import android.app.Fragment;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,7 +14,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -23,7 +24,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
-
 
 /**
  * A simple {@link Fragment} subclass.
@@ -175,7 +175,16 @@ public class TrecentFragment extends Fragment {
         @Override
         protected void onPostExecute(List<DeclarationModel> val) {
             progressBar.setVisibility(View.INVISIBLE);
-            lv.setAdapter(new DeclareListAdapter(getActivity(),R.layout.declarationlistitem,val));
+            if(DBOps.isPublished) {
+                lv.setAdapter(new DeclareListAdapter(getActivity(), R.layout.declarationlistitem, val));
+            }else{
+                final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
+                alertDialogBuilder.setTitle("Stay Tuned...").setMessage("Please wait till Valentines day").setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                }).show();
+            }
         }
     }
     /////////////////////////////////////////////////////////

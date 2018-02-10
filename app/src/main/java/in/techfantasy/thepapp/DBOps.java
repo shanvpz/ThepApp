@@ -18,6 +18,8 @@ public class DBOps {
     static String value;
     public static boolean connected=false;
     public static String[] imglinks;
+    public static boolean isPublished=false;
+
     public static void getImageArray(){
 
         DatabaseReference rootRef;
@@ -27,6 +29,7 @@ public class DBOps {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 value =  dataSnapshot.child("TrollLinks").getValue(String.class);
+                isPublished =  dataSnapshot.child("isPublished").getValue(Boolean.class);
                 Log.i("data from db", value);
                 try {
                     imglinks = value.split(",");
@@ -34,6 +37,7 @@ public class DBOps {
                 catch (Exception e){
                     Log.e("from dbops",e.getMessage());
                 }
+                Log.i("isPublished",""+isPublished);
             }
 
             @Override
