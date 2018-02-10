@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -78,7 +79,9 @@ public class TrecentFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
 
         }
-
+        if(!DBOps.connected){
+            Toast.makeText(getActivity(),"Please Connect To Internet",Toast.LENGTH_LONG).show();
+        }
     }
 
     @Override

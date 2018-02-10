@@ -69,6 +69,9 @@ public class FeedBackFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        if(!DBOps.connected){
+            Toast.makeText(getActivity(),"Please Connect To Internet",Toast.LENGTH_LONG).show();
+        }
     }
 
     @Override

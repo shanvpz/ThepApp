@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Toast;
 
 
 /**
@@ -59,6 +60,9 @@ public class ThepStories extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+        }
+        if(!DBOps.connected){
+            Toast.makeText(getActivity(),"Please Connect To Internet",Toast.LENGTH_LONG).show();
         }
     }
 

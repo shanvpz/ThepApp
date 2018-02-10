@@ -1,6 +1,7 @@
 package in.techfantasy.thepapp;
 
 import android.*;
+import android.Manifest;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -38,7 +39,7 @@ import android.widget.Toast;
 import java.io.File;
 
 public class Main2Activity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener,ConnectivityReceiver.ConnectivityReceiverListener {
 
     boolean doubleBackToExitPressedOnce = false;
     final int REQUEST_CODE_ASK_PERMISSIONS = 123;
@@ -58,7 +59,7 @@ public class Main2Activity extends AppCompatActivity
         } else {
             requestruntimePermission();
         }
-
+        checkConnection();
         loadContent(new HomeFragment());
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -140,6 +141,13 @@ public class Main2Activity extends AppCompatActivity
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main2, menu);
         return true;
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        MyApplication.getInstance().setConnectivityListener(this);
     }
 
     @Override
@@ -229,11 +237,12 @@ public class Main2Activity extends AppCompatActivity
 
     private void requestruntimePermission() {
 
-        int hasCameraPermission = ActivityCompat.checkSelfPermission(Main2Activity.this, android.Manifest.permission.READ_EXTERNAL_STORAGE)+
+        int hasCameraPermission = ActivityCompat.checkSelfPermission(Main2Activity.this, Manifest.permission.ACCESS_NETWORK_STATE)+
+                ActivityCompat.checkSelfPermission(Main2Activity.this, android.Manifest.permission.READ_EXTERNAL_STORAGE)+
                 ActivityCompat.checkSelfPermission(Main2Activity.this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE);
 
         if (hasCameraPermission != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(Main2Activity.this, new String[]{android.Manifest.permission.READ_EXTERNAL_STORAGE, android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_CODE_ASK_PERMISSIONS);
+            ActivityCompat.requestPermissions(Main2Activity.this, new String[]{Manifest.permission.ACCESS_NETWORK_STATE,android.Manifest.permission.READ_EXTERNAL_STORAGE, android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_CODE_ASK_PERMISSIONS);
         } else {
             //Toast.makeText(DefaultActivity.this, "Welcome", Toast.LENGTH_SHORT).show();
         }
@@ -268,4 +277,22 @@ public class Main2Activity extends AppCompatActivity
         }
     }
 
+    @Override
+    public void onNetworkConnectionChanged(boolean isConnected) {
+        DBOps.connected=isConnected;
+        showToast(isConnected);
+    }
+
+    public void checkConnection() {
+        DBOps.connected = ConnectivityReceiver.isConnected();
+        showToast(DBOps.connected);
+    }
+    public void showToast(boolean status){
+        if(status==true){
+        }
+        else {
+            Toast.makeText(Main2Activity.this,"Please enable internet",Toast.LENGTH_SHORT).show();
+        }
+
+    }
 }
