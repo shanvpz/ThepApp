@@ -15,6 +15,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.Settings;
+import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
@@ -237,12 +238,12 @@ public class Main2Activity extends AppCompatActivity
 
     private void requestruntimePermission() {
 
-        int hasCameraPermission = ActivityCompat.checkSelfPermission(Main2Activity.this, Manifest.permission.ACCESS_NETWORK_STATE)+
+        int hasCameraPermission =
                 ActivityCompat.checkSelfPermission(Main2Activity.this, android.Manifest.permission.READ_EXTERNAL_STORAGE)+
                 ActivityCompat.checkSelfPermission(Main2Activity.this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE);
 
         if (hasCameraPermission != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(Main2Activity.this, new String[]{Manifest.permission.ACCESS_NETWORK_STATE,android.Manifest.permission.READ_EXTERNAL_STORAGE, android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_CODE_ASK_PERMISSIONS);
+            ActivityCompat.requestPermissions(Main2Activity.this, new String[]{android.Manifest.permission.READ_EXTERNAL_STORAGE, android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_CODE_ASK_PERMISSIONS);
         } else {
             //Toast.makeText(DefaultActivity.this, "Welcome", Toast.LENGTH_SHORT).show();
         }
@@ -254,11 +255,12 @@ public class Main2Activity extends AppCompatActivity
             case REQUEST_CODE_ASK_PERMISSIONS:
                 // Check if the only required permission has been granted
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    Toast.makeText(this, "Runtime Permission is Granted", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(this, "Runtime Permission is Granted", Toast.LENGTH_SHORT).show();
                 } else {
-                    LinearLayout layout;
-                    layout=findViewById(R.id.drawer_layout);
-
+                    ConstraintLayout layout;
+                    layout=findViewById(R.id.contentMain);
+//                    Toast.makeText(this, "Please enable permissions", Toast.LENGTH_LONG).show();
+//                    finish();
                     Snackbar.make(layout, "Please enable permission from settings",
                             Snackbar.LENGTH_INDEFINITE)
                             .setAction("OK", new View.OnClickListener() {
