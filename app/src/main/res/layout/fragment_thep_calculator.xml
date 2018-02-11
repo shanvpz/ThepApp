@@ -19,7 +19,7 @@
                 android:id="@+id/etxtUrName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Your Name"
+                android:hint="Your Full Name"
                 android:inputType="text"
                 android:digits="qwertzuiopasdfghjklyxcvbnm "
                 android:singleLine="true" />
@@ -32,7 +32,7 @@
                 android:id="@+id/etxtpartnerName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Partner Name"
+                android:hint="Partner Full Name"
                 android:inputType="text"
                 android:digits="qwertzuiopasdfghjklyxcvbnm "
                 android:singleLine="true" />
@@ -133,14 +133,16 @@
         <Button
             android:id="@+id/btnTCalc"
             android:layout_width="match_parent"
-            android:layout_gravity="center_horizontal"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/colorAccent"
             android:text="Check Now" />
 
         <Button
             android:id="@+id/buttoncheckagain"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/colorAccent"
             android:text="Check Another" />
 
     </LinearLayout>
