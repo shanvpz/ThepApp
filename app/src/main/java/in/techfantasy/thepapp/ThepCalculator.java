@@ -114,6 +114,7 @@ public class ThepCalculator extends Fragment {
             public void onClick(View v) {
                 urName = etxtUrName.getText().toString();
                 partnerName = etxtPartnerName.getText().toString();
+                FirebaseDatabase.getInstance().setPersistenceEnabled(true);
                 DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("CalcModel");
                 String entryId = mDatabase.push().getKey();
 

@@ -23,6 +23,7 @@ public class DBOps {
     public static void getImageArray(){
 
         DatabaseReference rootRef;
+        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
         rootRef = FirebaseDatabase.getInstance().getReference();
         rootRef.addValueEventListener(new ValueEventListener() {
 

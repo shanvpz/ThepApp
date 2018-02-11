@@ -140,6 +140,7 @@ public class DeclareFragment extends Fragment {
                     story=etxtStory.getText().toString();
                     startdate=etxtStartDate.getText().toString();
                     enddate=etxtEndDate.getText().toString();
+                    FirebaseDatabase.getInstance().setPersistenceEnabled(true);
                     DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("DeclarationModel");
                     String declarationId = mDatabase.push().getKey();
                     DeclarationModel dm = new DeclarationModel(myname,hername,story,startdate,enddate);

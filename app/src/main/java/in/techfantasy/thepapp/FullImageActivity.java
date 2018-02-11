@@ -17,6 +17,7 @@ import android.os.Environment;
 import android.support.design.widget.FloatingActionButton;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -48,28 +49,32 @@ public class FullImageActivity extends Activity {
         floatbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
-                BitmapDrawable draw = (BitmapDrawable) img.getDrawable();
-                Bitmap bitmap = draw.getBitmap();
-
-                Intent share = new Intent(Intent.ACTION_SEND);
-                share.setType("image/jpeg");
-                ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
-                File f = new File(getBaseContext().getExternalFilesDir("Temp"), "Temporary_Trollz.jpg");
-                // File f = new File(Environment.getExternalStorageDirectory() + File.separator + "temporary_file.jpg");
                 try {
-                    f.createNewFile();
-                    FileOutputStream fo = new FileOutputStream(f);
-                    fo.write(bytes.toByteArray());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                Uri uri=Uri.fromFile(f);
-                share.putExtra(Intent.EXTRA_STREAM,uri);
+
+                    BitmapDrawable draw = (BitmapDrawable) img.getDrawable();
+                    Bitmap bitmap = draw.getBitmap();
+
+                    Intent share = new Intent(Intent.ACTION_SEND);
+                    share.setType("image/jpeg");
+                    ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+                    File f = new File(getBaseContext().getExternalFilesDir("Temp"), "Temporary_Trollz.jpg");
+                    // File f = new File(Environment.getExternalStorageDirectory() + File.separator + "temporary_file.jpg");
+                    try {
+                        f.createNewFile();
+                        FileOutputStream fo = new FileOutputStream(f);
+                        fo.write(bytes.toByteArray());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    Uri uri = Uri.fromFile(f);
+                    share.putExtra(Intent.EXTRA_STREAM, uri);
 //                share.putExtra(Intent.EXTRA_STREAM, Uri.parse("file:///sdcard/temporary_file.jpg"));
-                startActivity(Intent.createChooser(share, "Share Image"));
+                    startActivity(Intent.createChooser(share, "Share Image"));
+                }
+                catch (Exception e){
+                    Toast.makeText(FullImageActivity.this,"Somthing went wrong",Toast.LENGTH_SHORT).show();
+                }
 
             }
         });
