@@ -19,11 +19,12 @@ public class DBOps {
     public static boolean connected=false;
     public static String[] imglinks;
     public static boolean isPublished=false;
+    public static String shareTag="via #ThepApp";
 
     public static void getImageArray(){
 
         DatabaseReference rootRef;
-        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+
         rootRef = FirebaseDatabase.getInstance().getReference();
         rootRef.addValueEventListener(new ValueEventListener() {
 
@@ -31,6 +32,7 @@ public class DBOps {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 value =  dataSnapshot.child("TrollLinks").getValue(String.class);
                 isPublished =  dataSnapshot.child("isPublished").getValue(Boolean.class);
+                shareTag =  dataSnapshot.child("shareTag").getValue(String.class);
                 Log.i("data from db", value);
                 try {
                     imglinks = value.split(",");

@@ -68,6 +68,7 @@ public class FullImageActivity extends Activity {
                         e.printStackTrace();
                     }
                     Uri uri = Uri.fromFile(f);
+                    share.putExtra(Intent.EXTRA_TEXT,DBOps.shareTag);
                     share.putExtra(Intent.EXTRA_STREAM, uri);
 //                share.putExtra(Intent.EXTRA_STREAM, Uri.parse("file:///sdcard/temporary_file.jpg"));
                     startActivity(Intent.createChooser(share, "Share Image"));

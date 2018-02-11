@@ -17,6 +17,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".Main2Activity"
+            android:label="Thep App"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,7 +26,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".FullImageActivity"/>
+        <activity android:name=".FullImageActivity" android:label="Thep Trolls"/>
         <activity android:name=".SplashActivity">
 
             <intent-filter>

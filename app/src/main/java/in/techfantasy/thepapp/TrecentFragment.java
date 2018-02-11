@@ -84,11 +84,15 @@ public class TrecentFragment extends Fragment {
         }
     }
 
+    private android.support.v7.app.ActionBar getActionBar() {
+        return ((Main2Activity) getActivity()).getSupportActionBar();
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View v = inflater.inflate(R.layout.fragment_trecent, container, false);
+        getActionBar().setTitle("Recent Thepz");
 
         //data=v.findViewById(R.id.datafromserver);
         lv=v.findViewById(R.id.declarationList);

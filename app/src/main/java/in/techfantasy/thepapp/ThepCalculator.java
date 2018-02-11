@@ -5,7 +5,6 @@ import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,9 +17,7 @@ import android.widget.Toast;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 
@@ -85,6 +82,12 @@ public class ThepCalculator extends Fragment {
         }
     }
 
+    private android.support.v7.app.ActionBar getActionBar() {
+        return ((Main2Activity) getActivity()).getSupportActionBar();
+    }
+
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -104,7 +107,7 @@ public class ThepCalculator extends Fragment {
         btnceckagain.setVisibility(View.GONE);
         linearlay.setVisibility(View.INVISIBLE);
         txtMsg.setVisibility(View.INVISIBLE);
-
+        getActionBar().setTitle("Thep Calculator");
 
         Typeface typeFace = Typeface.createFromAsset(getActivity().getAssets(),"ML-NILA03_NewLipi.ttf");
         txtMsg.setTypeface(typeFace);

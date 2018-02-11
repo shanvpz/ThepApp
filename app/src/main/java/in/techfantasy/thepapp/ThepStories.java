@@ -66,11 +66,16 @@ public class ThepStories extends Fragment {
         }
     }
 
+    private android.support.v7.app.ActionBar getActionBar() {
+        return ((Main2Activity) getActivity()).getSupportActionBar();
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_thep_stories, container, false);
+        getActionBar().setTitle("Thep Stories");
         WebView wv=v.findViewById(R.id.webview1);
         String ua = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.140 Safari/537.36";
         wv.getSettings().setUserAgentString(ua);

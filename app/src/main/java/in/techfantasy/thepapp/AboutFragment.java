@@ -63,10 +63,14 @@ public class AboutFragment extends Fragment {
         }
     }
 
+    private android.support.v7.app.ActionBar getActionBar() {
+        return ((Main2Activity) getActivity()).getSupportActionBar();
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v=inflater.inflate(R.layout.fragment_about, container, false);
+        getActionBar().setTitle("About Us");
         txtabt=v.findViewById(R.id.textviewabout);
 
         Typeface typeFace = Typeface.createFromAsset(getActivity().getAssets(),"ML-NILA03_NewLipi.ttf");

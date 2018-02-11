@@ -64,12 +64,16 @@ public class TcommunityFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
+    private android.support.v7.app.ActionBar getActionBar() {
+        return ((Main2Activity) getActivity()).getSupportActionBar();
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v=inflater.inflate(R.layout.fragment_tcommunity, container, false);
+        getActionBar().setTitle("Thep FB Pages");
       //  txthtml=v.findViewById(R.id.txthtml);
         //txthtml.setText(Html.fromHtml(" <ul><li><a href=\"https://www.facebook.com/%E0%B4%A4%E0%B5%87%E0%B4%AA%E0%B5%8D%E0%B4%AA%E0%B5%8D-Theppu-1591277881164162/?ref=br_rs\">Theppu</a></li></ul>"));
 

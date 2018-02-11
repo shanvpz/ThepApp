@@ -67,11 +67,16 @@ public class TrollsFragment extends Fragment {
         }
     }
 
+    private android.support.v7.app.ActionBar getActionBar() {
+        return ((Main2Activity) getActivity()).getSupportActionBar();
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v =  inflater.inflate(R.layout.fragment_trolls, container, false);
+        getActionBar().setTitle("Thep Trolls");
         GridView gridview = v.findViewById(R.id.gridview);
 
         gridview.setAdapter(new ImageAdapter(getActivity()));

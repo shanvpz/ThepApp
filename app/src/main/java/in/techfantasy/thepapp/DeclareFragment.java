@@ -72,11 +72,15 @@ public class DeclareFragment extends Fragment {
         }
     }
 
+    private android.support.v7.app.ActionBar getActionBar() {
+        return ((Main2Activity) getActivity()).getSupportActionBar();
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_declare, container, false);
+        getActionBar().setTitle("Declare My Thep");
         etxtMyName=v.findViewById(R.id.etxtUrNamethep);
         etxtPartnerName=v.findViewById(R.id.etxtPatNameThep);
         etxtStory=v.findViewById(R.id.etxtUrstorythep);
